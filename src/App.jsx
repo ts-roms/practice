@@ -16,7 +16,11 @@ import Autocomplete from './problems/14-autocomplete/Autocomplete.jsx'
 import UseFetchDemo from './problems/15-use-fetch/UseFetchDemo.jsx'
 import InfiniteList from './problems/16-infinite-scroll/InfiniteList.jsx'
 import ReorderList from './problems/17-drag-reorder/ReorderList.jsx'
+import SortableTable from './problems/18-sortable-table/SortableTable.jsx'
+import UseLocalStorageDemo from './problems/19-use-localstorage/UseLocalStorageDemo.jsx'
+import UseDebounceDemo from './problems/20-use-debounce/UseDebounceDemo.jsx'
 import DocsViewer from './DocsViewer.jsx'
+import Quiz from './quiz/Quiz.jsx'
 
 const WORDS = ['apple', 'apricot', 'avocado', 'banana', 'blueberry', 'cherry']
 const fakeFetchSuggestions = (q) =>
@@ -48,11 +52,14 @@ const PROBLEMS = [
   { id: '15 useFetch hook', el: <UseFetchDemo /> },
   { id: '16 Infinite scroll', el: <InfiniteList loadMore={fakeLoadMore} /> },
   { id: '17 Drag reorder', el: <ReorderList initialItems={['Alpha', 'Bravo', 'Charlie', 'Delta']} /> },
+  { id: '18 Sortable table', el: <SortableTable columns={[{ key: 'name', label: 'Name' }, { key: 'age', label: 'Age' }]} rows={[{ name: 'Charlie', age: 30 }, { name: 'Alice', age: 35 }, { name: 'Bob', age: 25 }]} /> },
+  { id: '19 useLocalStorage', el: <UseLocalStorageDemo /> },
+  { id: '20 useDebounce', el: <UseDebounceDemo /> },
 ]
 
 // Just a manual playground/preview. The real grading is the *.test.jsx files.
 export default function App() {
-  const [view, setView] = useState('problems') // 'problems' | 'docs'
+  const [view, setView] = useState('problems') // 'problems' | 'docs' | 'quiz'
   const [active, setActive] = useState(0)
 
   const tabStyle = (on) => ({
@@ -75,10 +82,11 @@ export default function App() {
       <div style={{ display: 'flex', gap: 8, margin: '1rem 0' }}>
         <button style={tabStyle(view === 'problems')} onClick={() => setView('problems')}>Problems</button>
         <button style={tabStyle(view === 'docs')} onClick={() => setView('docs')}>Docs</button>
+        <button style={tabStyle(view === 'quiz')} onClick={() => setView('quiz')}>Quiz (MCQ)</button>
       </div>
       <hr />
 
-      {view === 'problems' ? (
+      {view === 'problems' && (
         <>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '1rem 0' }}>
             {PROBLEMS.map((p, i) => (
@@ -90,9 +98,15 @@ export default function App() {
           </div>
           <div style={{ marginTop: '1rem' }}>{PROBLEMS[active].el}</div>
         </>
-      ) : (
+      )}
+      {view === 'docs' && (
         <div style={{ marginTop: '1rem' }}>
           <DocsViewer />
+        </div>
+      )}
+      {view === 'quiz' && (
+        <div style={{ marginTop: '1rem' }}>
+          <Quiz />
         </div>
       )}
     </div>

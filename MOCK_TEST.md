@@ -60,6 +60,37 @@ cold, then grade. Coding prompts map to the runnable problems in `src/problems/`
 **15.** `screen.findByText(...)` differs from `getByText` because it…
 - A) Returns an array  B) Is async and waits for the element  C) Never throws  D) Searches by role
 
+> 💡 For more MCQs with instant feedback, open the **Quiz (MCQ)** tab in the app
+> (`npm run dev`) — 25 questions covering fundamentals + the advanced patterns.
+
+---
+
+## Section A2 — Advanced MCQ (10 min, 8 Q)
+
+**16.** To debounce a value with `useEffect` + `setTimeout`, the cleanup must…
+- A) Do nothing  B) `clearTimeout` the pending timer  C) Re-run the callback  D) Reset state
+
+**17.** `IntersectionObserver` is commonly used to implement…
+- A) Form validation  B) Infinite scroll / lazy loading  C) Global state  D) Routing
+
+**18.** For HTML5 drag-and-drop, the drop event won't fire unless `onDragOver`…
+- A) Returns false  B) Calls `e.preventDefault()`  C) Stops propagation  D) Sets state
+
+**19.** `useCallback(fn, deps)` is equivalent to…
+- A) `useMemo(fn, deps)`  B) `useMemo(() => fn, deps)`  C) `useRef(fn)`  D) `useEffect(fn, deps)`
+
+**20.** A good reason to extract a custom hook is to…
+- A) Run faster  B) Reuse stateful logic across components  C) Avoid state  D) Replace Redux
+
+**21.** When fetching in an effect, why use a cancel flag / `AbortController` in cleanup?
+- A) Speed  B) Avoid setting state after unmount  C) Caching  D) Retry logic
+
+**22.** Which correctly reads an existing value in `useLocalStorage(key, init)`?
+- A) Always return `init`  B) `JSON.parse(localStorage.getItem(key))` if present, else `init`  C) `localStorage[key]` directly  D) Use a ref
+
+**23.** A sortable table that toggles asc/desc on repeated header clicks should track…
+- A) Only the rows  B) The active sort key AND direction  C) Nothing  D) The DOM order
+
 ---
 
 ## Section B — Coding (45 min)
@@ -110,7 +141,18 @@ Write 2–3 sentences each (these are typical follow-up interview questions):
 14. **B** — Context solves prop drilling.
 15. **B** — `findBy*` is async and waits (use after fetch).
 
-**Scoring:** 13–15 = strong · 10–12 = solid mid · <10 = review the STUDY_GUIDE.
+**Scoring (A):** 13–15 = strong · 10–12 = solid mid · <10 = review the STUDY_GUIDE.
+
+## Answer key — Section A2 (advanced)
+
+16. **B** — clearing the timer on each change is what makes only the final value fire.
+17. **B** — observe a sentinel element; load more when it scrolls into view.
+18. **B** — without `preventDefault` on dragover, no drop event fires.
+19. **B** — `useCallback(fn, d)` ≡ `useMemo(() => fn, d)` (memoizes the function ref).
+20. **B** — custom hooks share stateful logic, not markup.
+21. **B** — ignore a resolved request after the component unmounts (no state-after-unmount).
+22. **B** — parse stored JSON if present, otherwise fall back to the initial value.
+23. **B** — you need both the key and the direction to toggle and render `aria-sort`.
 
 ---
 

@@ -10,9 +10,11 @@ React Test**. You have 7 days — here's a plan.
 
 | File / folder | What it is |
 |---|---|
-| `src/problems/` | **Runnable** HackerRank-style coding tests (Vite + Vitest + RTL). 17 problems, make the tests pass. This is the most important part. |
+| `src/problems/` | **Runnable** HackerRank-style coding tests (Vite + Vitest + RTL). 20 problems, make the tests pass. This is the most important part. |
+| Quiz (MCQ) tab | Interactive multiple-choice quiz (25 questions, instant feedback). Run `npm run dev` and click **Quiz (MCQ)**. |
 | `STUDY_GUIDE.md` | Concept cheat-sheet — hooks, core concepts, JS, gotchas, RTL queries. |
 | `MOCK_TEST.md` | Timed mock paper: 15 MCQs + 4 coding tasks + verbal Qs, with full answer key. |
+| `src/mock-questions/` | **2 full-format mock exam questions** matching the real test (1 section, React Intermediate, 2 project questions with spec sheets + hidden tests). |
 | `_solutions/` | Verified reference solutions (peek only after trying). |
 | `../FrontEnd_React_Interview_Pack.docx` | Theory question bank (70% theory / 30% practical) with model answers. |
 
@@ -32,9 +34,9 @@ Then open [src/problems/01-counter/Counter.jsx](src/problems/01-counter/Counter.
 - **Day 2** — Problems 04–05 (star rating, fetch states). Re-read the `useEffect` section.
 - **Day 3** — Problems 06–08 (debounce, pagination, fix-the-bug). These are the differentiators.
 - **Day 4** — Problems 09–13 (modal, form validation, useReducer, stopwatch, context).
-- **Day 5** — Advanced 14–17 (autocomplete, useFetch, infinite scroll, drag-reorder). Stretch goals.
-- **Day 6** — Take `MOCK_TEST.md` timed (75 min), cold. Grade yourself. Review weak spots.
-- **Day 7** — Redo any problem from a blank file in <15 min each. Skim theory once more.
+- **Day 5** — Advanced 14–20 (autocomplete, useFetch, infinite scroll, drag-reorder, sortable table, useLocalStorage, useDebounce) + the **Quiz (MCQ)** tab.
+- **Day 6** — **Take the 2 mock exam questions** (`src/mock-questions/`) timed at 75 min, cold — this is the closest dress rehearsal for the real format. Then grade with their tests.
+- **Day 7** — Take `MOCK_TEST.md` (MCQ/theory). Redo any weak problem from a blank file in <15 min. Skim theory once more.
 
 ## What the real test likely looks like
 

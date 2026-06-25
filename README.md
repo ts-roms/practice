@@ -31,7 +31,7 @@ Open a problem under `src/problems/<NN>-<name>/`, read the doc comment + the
 npx vitest run src/problems/02-todo
 ```
 
-## The 17 problems (01–13 core, 14–17 advanced)
+## The 20 problems (01–13 core, 14–20 advanced)
 
 | #  | Problem            | What it drills                                        |
 |----|--------------------|------------------------------------------------------|
@@ -52,6 +52,9 @@ npx vitest run src/problems/02-todo
 | 15 | `useFetch` hook    | **[adv]** custom hook, `renderHook`, loading/error/refetch |
 | 16 | Infinite scroll    | **[adv]** IntersectionObserver, append batches, load guard |
 | 17 | Drag-to-reorder    | **[adv]** HTML5 drag events, immutable splice reorder |
+| 18 | Sortable table     | **[adv]** click-to-sort asc/desc, `aria-sort`, numeric vs string |
+| 19 | `useLocalStorage`  | **[adv]** custom hook, lazy init, persist + functional updater |
+| 20 | `useDebounce`      | **[adv]** custom hook, `setTimeout` + cleanup, timer reset |
 
 ## Stuck?
 
