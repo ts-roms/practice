@@ -1,0 +1,30 @@
+{
+  "name": "dynachrg-react-practice",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "HackerRank-style React practice problems with Vitest + RTL (mimics the real test-driven exam flow).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:one": "vitest run --"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "jsdom": "^24.1.0",
+    "vite": "^5.3.3",
+    "vitest": "^2.0.2"
+  }
+}
