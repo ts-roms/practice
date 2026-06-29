@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { mdCodeCss } from './codeTheme.js'
 
 // Vite imports the markdown files as raw strings (the `?raw` suffix).
 import startHere from '../START_HERE.md?raw'
@@ -21,9 +22,7 @@ const mdStyles = `
 .md h1 { font-size: 1.7rem; border-bottom: 1px solid #eaecef; padding-bottom: .3em; }
 .md h2 { font-size: 1.3rem; border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin-top: 1.6em; }
 .md h3 { font-size: 1.1rem; margin-top: 1.4em; }
-.md code { background: #f6f8fa; padding: .15em .4em; border-radius: 6px; font-size: 85%; }
-.md pre { background: #f6f8fa; padding: 12px 14px; border-radius: 8px; overflow: auto; }
-.md pre code { background: none; padding: 0; }
+${mdCodeCss('md')}
 .md table { border-collapse: collapse; width: 100%; margin: 1em 0; display: block; overflow-x: auto; }
 .md th, .md td { border: 1px solid #d0d7de; padding: 6px 12px; text-align: left; }
 .md th { background: #f6f8fa; }

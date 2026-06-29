@@ -12,6 +12,7 @@ React Test**. You have 7 days — here's a plan.
 |---|---|
 | `src/problems/` | **Runnable** HackerRank-style coding tests (Vite + Vitest + RTL). 20 problems, make the tests pass. This is the most important part. |
 | Quiz (MCQ) tab | Interactive multiple-choice quiz (25 questions, instant feedback). Run `npm run dev` and click **Quiz (MCQ)**. |
+| `src/live-coding/` | **Live coding mini-course** — 5 timed, interviewer-style challenges (prompts, follow-ups, rubrics, solutions) for the real-time/screen-share round. Also in the **Live Coding** tab. |
 | `STUDY_GUIDE.md` | Concept cheat-sheet — hooks, core concepts, JS, gotchas, RTL queries. |
 | `MOCK_TEST.md` | Timed mock paper: 15 MCQs + 4 coding tasks + verbal Qs, with full answer key. |
 | `src/mock-questions/` | **2 full-format mock exam questions** matching the real test (1 section, React Intermediate, 2 project questions with spec sheets + hidden tests). |

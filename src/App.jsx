@@ -21,6 +21,23 @@ import UseLocalStorageDemo from './problems/19-use-localstorage/UseLocalStorageD
 import UseDebounceDemo from './problems/20-use-debounce/UseDebounceDemo.jsx'
 import DocsViewer from './DocsViewer.jsx'
 import Quiz from './quiz/Quiz.jsx'
+import LiveCoding from './LiveCoding.jsx'
+import Senior from './Senior.jsx'
+import MockQuestions from './MockQuestions.jsx'
+import { preStyle } from './codeTheme.js'
+
+// Pull every problem's test + reference-solution source as raw text.
+const problemTests = import.meta.glob('./problems/**/*.test.{js,jsx}', { query: '?raw', import: 'default', eager: true })
+const problemSolutions = import.meta.glob('../_solutions/*', { query: '?raw', import: 'default', eager: true })
+const testFor = (prefix) => {
+  const hit = Object.entries(problemTests).find(([path]) => path.includes(`/${prefix}-`))
+  return hit ? hit[1] : '// no test file found'
+}
+const solutionFor = (prefix) => {
+  // _solutions files are named like "01-Counter.jsx" — match the leading number.
+  const hit = Object.entries(problemSolutions).find(([path]) => path.includes(`/${prefix}-`))
+  return hit ? hit[1] : '// no reference solution found'
+}
 
 const WORDS = ['apple', 'apricot', 'avocado', 'banana', 'blueberry', 'cherry']
 const fakeFetchSuggestions = (q) =>
@@ -59,8 +76,11 @@ const PROBLEMS = [
 
 // Just a manual playground/preview. The real grading is the *.test.jsx files.
 export default function App() {
-  const [view, setView] = useState('problems') // 'problems' | 'docs' | 'quiz'
+  const [view, setView] = useState('problems')
   const [active, setActive] = useState(0)
+  const [panel, setPanel] = useState('preview') // 'preview' | 'tests'
+
+  const activePrefix = PROBLEMS[active].id.slice(0, 2) // '01'..'20'
 
   const tabStyle = (on) => ({
     padding: '8px 16px',
@@ -83,6 +103,9 @@ export default function App() {
         <button style={tabStyle(view === 'problems')} onClick={() => setView('problems')}>Problems</button>
         <button style={tabStyle(view === 'docs')} onClick={() => setView('docs')}>Docs</button>
         <button style={tabStyle(view === 'quiz')} onClick={() => setView('quiz')}>Quiz (MCQ)</button>
+        <button style={tabStyle(view === 'mock')} onClick={() => setView('mock')}>Mock Exam</button>
+        <button style={tabStyle(view === 'live')} onClick={() => setView('live')}>Live Coding</button>
+        <button style={tabStyle(view === 'senior')} onClick={() => setView('senior')}>Senior</button>
       </div>
       <hr />
 
@@ -96,8 +119,43 @@ export default function App() {
               </button>
             ))}
           </div>
-          <div style={{ marginTop: '1rem' }}>{PROBLEMS[active].el}</div>
+
+          <div style={{ display: 'flex', gap: 6, margin: '0.5rem 0', borderBottom: '1px solid #eee', paddingBottom: 8 }}>
+            {[['preview', 'Preview'], ['tests', 'Tests (the grader)'], ['solution', 'Solution']].map(([key, label]) => (
+              <button key={key} onClick={() => setPanel(key)}
+                style={{ padding: '5px 12px', background: panel === key ? '#0b5' : '#eee', color: panel === key ? '#fff' : '#000', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13 }}>
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {panel === 'preview' && <div style={{ marginTop: '1rem' }}>{PROBLEMS[active].el}</div>}
+          {panel === 'tests' && (
+            <div style={{ marginTop: '0.5rem' }}>
+              <p style={{ color: '#666', fontSize: 13 }}>
+                This is what grades your work. Match its exact <code>data-testid</code>s and text.
+              </p>
+              <pre style={preStyle}>
+                <code>{testFor(activePrefix)}</code>
+              </pre>
+            </div>
+          )}
+          {panel === 'solution' && (
+            <div style={{ marginTop: '0.5rem' }}>
+              <p style={{ color: '#666', fontSize: 13 }}>
+                Reference solution (try first — then compare your approach).
+              </p>
+              <pre style={preStyle}>
+                <code>{solutionFor(activePrefix)}</code>
+              </pre>
+            </div>
+          )}
         </>
+      )}
+      {view === 'mock' && (
+        <div style={{ marginTop: '1rem' }}>
+          <MockQuestions />
+        </div>
       )}
       {view === 'docs' && (
         <div style={{ marginTop: '1rem' }}>
@@ -107,6 +165,16 @@ export default function App() {
       {view === 'quiz' && (
         <div style={{ marginTop: '1rem' }}>
           <Quiz />
+        </div>
+      )}
+      {view === 'live' && (
+        <div style={{ marginTop: '1rem' }}>
+          <LiveCoding />
+        </div>
+      )}
+      {view === 'senior' && (
+        <div style={{ marginTop: '1rem' }}>
+          <Senior />
         </div>
       )}
     </div>
