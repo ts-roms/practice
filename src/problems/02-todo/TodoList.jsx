@@ -24,7 +24,7 @@ export default function TodoList() {
     if (!trimmed) return;
 
     const newTodo = {
-      id: Date.now(),
+      id: (todos.length - 1) + 1,
       text: trimmed,
       completed: false,
     };

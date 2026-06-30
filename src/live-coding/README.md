@@ -6,7 +6,7 @@ through your thinking**. There are usually no hidden tests — *you* are being
 evaluated as much as the code. DynaChrg-style interviews use these to see how you
 reason, communicate, and handle changing requirements.
 
-This module has 15 timed challenges with interviewer prompts, follow-ups, and
+This module has 21 timed challenges with interviewer prompts, follow-ups, and
 reference solutions.
 
 ## The 6-step approach (say these out loud)
@@ -56,6 +56,12 @@ reference solutions.
 | 13 | Multi-step Form Wizard | 25 min | React | shared form state, per-step validation, navigation |
 | 14 | Toast Notifications | 20 min | React | id'd list, per-toast auto-dismiss timers (no leaks) |
 | 15 | Custom Hooks (useToggle, usePrevious) | 20 min | React | refs across renders, render-then-effect timing |
+| 16 | Custom Dropdown / Select | 20 min | React | useRef + outside-click listener with cleanup |
+| 17 | Like button (optimistic update) | 20 min | React | optimistic UI → await → rollback on error |
+| 18 | Multi-select + Select all | 20 min | React | checkbox `indeterminate` via ref, Set state |
+| 19 | Inline-editable list | 20 min | React | edit-mode state, Enter/Escape/blur, stable keys |
+| 20 | Countdown timer | 15 min | React | `setInterval` + cleanup, stop-at-zero |
+| 21 | Stopwatch (useRef) | 20 min | React | interval id in a ref, double-start guard, laps |
 
 Open each `CHALLENGE.md`, start a timer, build in `Starter.*`, then compare with
 `Solution.*`. Or read the prompts in the app's **Live Coding** tab (`npm run dev`).

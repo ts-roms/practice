@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 import { preStyle, mdCodeCss } from './codeTheme.js'
 
 import overview from './live-coding/README.md?raw'
+import recommended from './live-coding/RECOMMENDED.md?raw'
 import c1 from './live-coding/01-tic-tac-toe/CHALLENGE.md?raw'
 import s1 from './live-coding/01-tic-tac-toe/Solution.jsx?raw'
 import c2 from './live-coding/02-typeahead/CHALLENGE.md?raw'
@@ -34,6 +35,18 @@ import c14 from './live-coding/14-toasts/CHALLENGE.md?raw'
 import s14 from './live-coding/14-toasts/Solution.jsx?raw'
 import c15 from './live-coding/15-custom-hooks/CHALLENGE.md?raw'
 import s15 from './live-coding/15-custom-hooks/solution.js?raw'
+import c16 from './live-coding/16-dropdown/CHALLENGE.md?raw'
+import s16 from './live-coding/16-dropdown/Solution.jsx?raw'
+import c17 from './live-coding/17-like-button/CHALLENGE.md?raw'
+import s17 from './live-coding/17-like-button/Solution.jsx?raw'
+import c18 from './live-coding/18-multi-select/CHALLENGE.md?raw'
+import s18 from './live-coding/18-multi-select/Solution.jsx?raw'
+import c19 from './live-coding/19-inline-edit/CHALLENGE.md?raw'
+import s19 from './live-coding/19-inline-edit/Solution.jsx?raw'
+import c20 from './live-coding/20-countdown/CHALLENGE.md?raw'
+import s20 from './live-coding/20-countdown/Solution.jsx?raw'
+import c21 from './live-coding/21-stopwatch-ref/CHALLENGE.md?raw'
+import s21 from './live-coding/21-stopwatch-ref/Solution.jsx?raw'
 
 // Test sources (only the JS challenges have automated tests; React ones are
 // judged by clicking, like a real live round).
@@ -44,6 +57,7 @@ const testFor = (dir) => {
 }
 
 const ITEMS = [
+  { id: '⭐ Top Picks', prompt: recommended, solution: null, dir: null },
   { id: 'Overview', prompt: overview, solution: null, dir: null },
   { id: '1 Tic-Tac-Toe', prompt: c1, solution: s1, dir: '01-tic-tac-toe' },
   { id: '2 Typeahead', prompt: c2, solution: s2, dir: '02-typeahead' },
@@ -60,6 +74,12 @@ const ITEMS = [
   { id: '13 Form Wizard', prompt: c13, solution: s13, dir: '13-form-wizard' },
   { id: '14 Toasts', prompt: c14, solution: s14, dir: '14-toasts' },
   { id: '15 Custom Hooks', prompt: c15, solution: s15, dir: '15-custom-hooks' },
+  { id: '16 Dropdown', prompt: c16, solution: s16, dir: '16-dropdown' },
+  { id: '17 Like Button', prompt: c17, solution: s17, dir: '17-like-button' },
+  { id: '18 Multi-select', prompt: c18, solution: s18, dir: '18-multi-select' },
+  { id: '19 Inline Edit', prompt: c19, solution: s19, dir: '19-inline-edit' },
+  { id: '20 Countdown', prompt: c20, solution: s20, dir: '20-countdown' },
+  { id: '21 Stopwatch (useRef)', prompt: c21, solution: s21, dir: '21-stopwatch-ref' },
 ]
 
 const mdStyles = `
@@ -123,7 +143,7 @@ export default function LiveCoding() {
         ))}
       </div>
 
-      {item.id !== 'Overview' && (
+      {item.dir && (
         <div style={{ display: 'flex', gap: 6, marginBottom: '0.75rem', borderBottom: '1px solid #eee', paddingBottom: 8 }}>
           {subTab('prompt', 'Prompt', '#8250df')}
           {subTab('tests', testSrc ? 'Tests' : 'Tests (none)', '#8250df')}
